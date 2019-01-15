@@ -7,7 +7,7 @@ const prefix = "!"
 
 Client.on("ready", () => {
 	console.log("online");
-	Client.user.setPresence({ game: { name: `Assister la OpTium`, type: 0} });
+	Client.user.setPresence({ game: { name: `faire /aide`, type: 0} });
 });
 
 
