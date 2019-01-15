@@ -21,6 +21,7 @@ Client.on("message", async (message) => {
 	let args = message.content.split(" ").slice(1);
 
 	if (command === "say") {
+	if (message.member.hasPermission("MANAGE_MESSAGES"))
 		message.delete()
         const embed = new Discord.RichEmbed()
 		.setColor(0x954D23)
@@ -28,15 +29,12 @@ Client.on("message", async (message) => {
 		message.channel.send({embed})
 	} else
 
-	if (command == "efefefefef") {
+	if (command == "aide") {
 		const embed = new Discord.RichEmbed()
 		.setColor(0x954D23)
-		.setTitle("Command List:")
-		.addField("!help", "Will give the current command list")
-		.addField("!ping", "WIll show the ping time for the bot")
-		.addField("!say [text]", "Will make the bot say something")
-		.addField("!announcement [text]", "Will make the bot say an announcement and tag everyone")
-		.addField("!cat", "Will send a random cat image");
+		.setTitle("List des commandes:")
+		.addField("/OpTium", "Tu veux des réseaux sociaux ?")
+		.addField("/classement", "Tu veux le classement ?")
 		message.channel.send({embed})
 	}
 
