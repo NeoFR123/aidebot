@@ -46,6 +46,10 @@ Client.login(process.env.TOKEN);
 
 exports.run = async (bot, message, args, ops) => {
 
+	if (!message.member.roles.find("name", "@Responsable Formulaire")) { //Whatever role you want, I pick @everyone because everyone can use this command
+		message.channel.send('Invalid permissions.');
+		return;
+	}
     
     // Check for input
     if (!args[0]) return message.channel.send('Proper usage: a.poll <question>');
@@ -53,9 +57,9 @@ exports.run = async (bot, message, args, ops) => {
     // Create Embed
     const embed = new Discord.RichEmbed()
         .setColor("#ffffff") //To change color do .setcolor("#fffff")
-        .setFooter('Vote par reactions.')
+        .setFooter('React to Vote.')
         .setDescription(args.join(' '))
-        .setTitle(`Sondage par ${message.author.username}`);
+        .setTitle(`Poll Created By ${message.author.username}`);
         
     let msg = await message.channel.send(embed)
         .then(function (msg) {
