@@ -43,3 +43,26 @@ Client.on("message", async (message) => {
 });
 
 Client.login(process.env.TOKEN);
+
+exports.run = async (bot, message, args, ops) => {
+
+    
+    // Check for input
+    if (!args[0]) return message.channel.send('Proper usage: a.poll <question>');
+    
+    // Create Embed
+    const embed = new Discord.RichEmbed()
+        .setColor("#ffffff") //To change color do .setcolor("#fffff")
+        .setFooter('Vote par reactions.')
+        .setDescription(args.join(' '))
+        .setTitle(`Sondage par ${message.author.username}`);
+        
+    let msg = await message.channel.send(embed)
+        .then(function (msg) {
+            msg.react("❎");
+            msg.react("✅"); // You can only add two reacts
+            message.delete({timeout: 1000});
+            }).catch(function(error) {
+            console.log(error);
+        });
+};
