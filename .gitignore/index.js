@@ -9,7 +9,7 @@ module.exports.help = {
 
 Client.on("ready", () => {
 	console.log("online");
-	Client.user.setPresence({ game: { name: `faire /aide`, type: 0} });
+	Client.user.setPresence({ game: { name: `Fortnite`, type: 0} });
 });
 
 
